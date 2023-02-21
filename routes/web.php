@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TestController;
 use App\Http\Controllers\ContactFormController;
+use App\Http\Controllers\ShopController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -15,6 +16,9 @@ use App\Http\Controllers\ContactFormController;
 */
 
 Route::get('tests/test', [ TestController::class, 'index' ]);
+
+Route::get('shops', [ ShopController::class, 'index' ]);
+
 
 // Route::resource('contacts', ContactFormController::class);
 // Route::get('contacts', [ ContactFormController::class, 'index'])->name('contacts.index');
@@ -29,6 +33,8 @@ Route::prefix('contacts') // 頭に contacts をつける
     Route::post('/', 'store')->name('store'); 
     Route::get('/{id}', 'show')->name('show'); 
     Route::get('/{id}/edit', 'edit')->name('edit'); 
+    Route::post('/{id}', 'update')->name('update');
+    Route::get('/{id}/destroy', 'destroy')->name('destroy'); 
 });
 
 
